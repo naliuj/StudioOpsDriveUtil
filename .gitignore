@@ -1,0 +1,6 @@
+venv/
+secret.py
+credentials.json
+token.json
+__pycache__/
+.idea/
