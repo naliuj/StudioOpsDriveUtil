@@ -17,15 +17,29 @@
 
 <body>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero bg-primary text-white text-center py-5">
-        <div class="container">
-            <h1>Studio Ops Drive Renamer</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Studio OPs Drive Util</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item {% if active_menu_item == '150' %}active{% endif %}">
+                        <a class="nav-link" href="/150">150</a>
+                    </li>
+                    <li class="nav-item {% if active_menu_item == '160a' %}active{% endif %}">
+                        <a class="nav-link" href="/160a">160a</a>
+                    </li>
+                    <li class="nav-item {% if active_menu_item == '160b' %}active{% endif %}">
+                        <a class="nav-link" href="/160b">160b</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section id="ActiveRooms" class="py-5">
         <h3>Active Security Logs</h3>
         <div class="row">
             <div class="container col-3">
@@ -92,11 +106,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer Section -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2023 Your Company. All rights reserved.</p>
-    </footer>
 
     <!-- Add Bootstrap JS and any other scripts here -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
