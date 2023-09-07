@@ -1,5 +1,7 @@
+import json
 import os
 import io
+
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -11,7 +13,7 @@ from google.auth.transport.requests import Request
 class GoogleDriveTools:
 
     teamDriveID = None
-    SCOPES = ["https://www.googleapis.com/auth/drive"]
+    SCOPES = ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.file"]
     creds = None
     apiService = None
     SAVE_PATH = 'static/temp'
@@ -71,6 +73,18 @@ class GoogleDriveTools:
         return active_rooms
 
     def rename_file(self, file_id, new_name):
-        file = self.apiService.files().get(fileId=file_id).execute()
-        file_metadata = {'name': new_name}
-        updated_file = self.apiService.files().update(fileId=file_id, body=file_metadata).execute()
+        file_metadata = {
+            'name': new_name,
+            'teamDriveId': self.teamDriveID,  # Include the team drive ID as the driveId
+            'supportsAllDrives': True,  # Set this to True to access files in shared drives
+            'supportsTeamDrives': True
+        }
+        try:
+            updated_file = self.apiService.files().update(fileId=file_id, body=file_metadata).execute()
+            print("File renamed successfully")
+        except Exception as e:
+            print("An error occurred:", str(e))
+            if isinstance(e, HttpError):
+                error_response = json.loads(e.content)
+                print("Error details:", error_response)
+
