@@ -80,7 +80,10 @@ class GoogleDriveTools:
             'supportsTeamDrives': True
         }
         try:
-            updated_file = self.apiService.files().update(fileId=file_id, body=file_metadata).execute()
+            updated_file = self.apiService.files().update(fileId=file_id,
+                                                          body=file_metadata,
+                                                          supportsAllDrives=True,
+                                                          supportsTeamDrives=True).execute()
             print("File renamed successfully")
         except Exception as e:
             print("An error occurred:", str(e))
