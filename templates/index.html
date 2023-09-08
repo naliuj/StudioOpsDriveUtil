@@ -39,8 +39,8 @@
         </div>
     </nav>
 
-    <section id="ActiveRooms" class="py-5">
-        <h3>Active Security Logs</h3>
+    <section id="ActiveRooms" class="container">
+        <h2 style="padding-bottom: 10px">Active Security Logs</h2>
         <div class="row">
             <div class="container row">
                 {% for room in active_rooms %}
@@ -56,14 +56,14 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#renameModal">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#renameModal_{{ room[0] }}">
                                     <i class="fas fa-edit"></i> <!-- Edit icon -->
                                     Rename
                                 </button>
                             </div>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="renameModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="renameModal_{{ room[0] }}" tabindex="-1" role="dialog" aria-labelledby="renameModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
