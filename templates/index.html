@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Bootstrap Website</title>
+    <title>Studio Ops Drive Util</title>
     <!-- Add Bootstrap CSS link here -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Add your custom CSS here -->
@@ -42,22 +42,25 @@
     <section id="ActiveRooms" class="py-5">
         <h3>Active Security Logs</h3>
         <div class="row">
-            <div class="container col-3">
+            <div class="container row">
                 {% for room in active_rooms %}
-                <div class="card">
+                <div class="card col-md-4" style="margin-bottom: 10px">
                     <div class="card-header">{{ room[1] }}</div>
                     <div class="card-body">
                         <div class="row">
-                            <a href="https://drive.google.com/drive/folders/{{ room[0] }}" target="_blank">
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-external-link-alt"></i>View Logs
+                            <div class="col-md-6">
+                                <a href="https://drive.google.com/drive/folders/{{ room[0] }}" target="_blank">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-external-link-alt"></i>View Logs
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#renameModal">
+                                    <i class="fas fa-edit"></i> <!-- Edit icon -->
+                                    Rename
                                 </button>
-                            </a>
-                            <!-- Button to Trigger Modal -->
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#renameModal">
-                                <i class="fas fa-edit"></i> <!-- Edit icon -->
-                                Rename
-                            </button>
+                            </div>
 
                             <!-- Modal -->
                             <div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="renameModalLabel" aria-hidden="true">
@@ -101,6 +104,9 @@
                         </div>
                     </div>
                 </div>
+                {% if loop.index % 3 == 0 %}
+                </div><div class="container row">
+                {% endif %}
                 {% endfor %}
                 </div>
             </div>
