@@ -45,7 +45,7 @@
             <div class="container row">
                 {% for room in active_rooms %}
                 <div class="card col-md-4" style="margin-bottom: 10px">
-                    <div class="card-header">{{ room[1] }}</div>
+                    <div class="card-header">{{ room[1][25:] }}</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -100,7 +100,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

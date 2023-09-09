@@ -46,7 +46,7 @@ class GoogleDriveTools:
                 supportsTeamDrives=True,
                 corpora='drive',
                 teamDriveId=self.teamDriveID,
-                fields="files(id, name)").execute()
+                fields="files(id, name, webViewLink)").execute()
             files = results.get('files', [])
             return files
         except HttpError as error:
@@ -87,4 +87,3 @@ class GoogleDriveTools:
             if isinstance(e, HttpError):
                 error_response = json.loads(e.content)
                 print("Error details:", error_response)
-
