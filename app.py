@@ -49,6 +49,7 @@ def desk_150():
     if form.validate_on_submit():
         for file in driveHelper.list_files(form.id.data):
             driveHelper.rename_file(file['id'], form.newName.data)
+        redirect(url_for('desk_150'))
 
     active_rooms = []
     for i in driveHelper.get_active_rooms(rooms_150):
@@ -64,6 +65,7 @@ def desk_160a():
     if form.validate_on_submit():
         for file in driveHelper.list_files(form.id.data):
             driveHelper.rename_file(file['id'], form.newName.data)
+        redirect(url_for('desk_160a'))
 
     active_rooms = []
     for i in driveHelper.get_active_rooms(rooms_160a):
@@ -78,8 +80,8 @@ def desk_160b():
 
     if form.validate_on_submit():
         for file in driveHelper.list_files(form.id.data):
-            print(form.newName.data)
             driveHelper.rename_file(file['id'], form.newName.data)
+        redirect(url_for('desk_160b'))
 
     active_rooms = []
     for i in driveHelper.get_active_rooms(rooms_160b):
