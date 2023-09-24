@@ -72,7 +72,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <form method="post" action="/{{ active_menu_item }}" class="needs-validation" style="margin: 10px" novalidate>
+                                        <form method="post" action="/{{ active_menu_item }}" class="needs-validation" style="margin: 10px" autocomplete="off" novalidate>
                                             {{ form.hidden_tag() }}
                                             <div class="mb-3">
                                                 <label for="{{ form.id.id }}" class="form-label">{{ form.id.label }}</label>

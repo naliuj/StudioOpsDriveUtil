@@ -10,10 +10,9 @@ from googleapiclient.errors import HttpError
 class GoogleDriveTools:
 
     teamDriveID = None
-    SCOPES = ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.file"]
+    SCOPES = ["https://www.googleapis.com/auth/drive"]
     creds = None
     apiService = None
-    SAVE_PATH = 'static/temp'
 
     def __init__(self, team_drive_id):
         # self.apiService = service
@@ -37,7 +36,7 @@ class GoogleDriveTools:
         # Create a Google Drive API service
         self.apiService = build('drive', 'v3', credentials=self.creds)
 
-    def list_files(self, folder_id):
+    def get_files(self, folder_id):
         try:
             results = self.apiService.files().list(
                 q=f"'{folder_id}' in parents and trashed = false",
@@ -65,7 +64,7 @@ class GoogleDriveTools:
     def get_active_rooms(self, studio_logs):
         active_rooms = []
         for room in studio_logs:
-            if self.list_files(room):
+            if self.get_files(room):
                 active_rooms.append(room)
         return active_rooms
 
@@ -81,7 +80,7 @@ class GoogleDriveTools:
                                                           body=file_metadata,
                                                           supportsAllDrives=True,
                                                           supportsTeamDrives=True).execute()
-            print("File renamed successfully")
+            print(file_id + " renamed successfully")
         except Exception as e:
             print("An error occurred:", str(e))
             if isinstance(e, HttpError):

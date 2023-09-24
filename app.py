@@ -30,7 +30,7 @@ def desk_150():
     form = RenameForm()
 
     if form.validate_on_submit():
-        for file in driveHelper.list_files(form.id.data):
+        for file in driveHelper.get_files(form.id.data):
             driveHelper.rename_file(file['id'], form.newName.data)
         redirect(url_for('desk_150'))
 
@@ -45,7 +45,7 @@ def desk_160a():
     form = RenameForm()
 
     if form.validate_on_submit():
-        for file in driveHelper.list_files(form.id.data):
+        for file in driveHelper.get_files(form.id.data):
             driveHelper.rename_file(file['id'], form.newName.data)
         redirect(url_for('desk_160a'))
 
@@ -60,7 +60,7 @@ def desk_160b():
     form = RenameForm()
 
     if form.validate_on_submit():
-        for file in driveHelper.list_files(form.id.data):
+        for file in driveHelper.get_files(form.id.data):
             driveHelper.rename_file(file['id'], form.newName.data)
         redirect(url_for('desk_160b'))
 
